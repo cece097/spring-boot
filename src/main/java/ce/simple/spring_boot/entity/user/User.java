@@ -1,0 +1,56 @@
+package ce.simple.spring_boot.entity.user;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import ce.simple.spring_boot.entity.base.UuidBase;
+
+/**
+ * 用户信息
+ * @author zss
+ * @date 2017年4月20日
+ */
+@Entity
+@Table(name="test_user")
+public class User extends UuidBase{
+	
+	@Column(name="NAME",nullable = false)
+	private String name;
+	
+	@Column(name="MOBILE",nullable = false)
+	private String mobile;
+	
+	/**
+	 * 空构建函数，不建议使用
+	 */
+	protected User() {
+	}
+	
+	public User(Long id, String name, String mobile){
+		super(id);
+		this.name = name;
+		this.mobile = mobile;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	
+	@Override
+    public String toString() {
+        return "name:"+this.name+",mobile:"+this.mobile;
+    }
+}
