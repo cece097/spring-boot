@@ -24,7 +24,8 @@ import ce.simple.spring_boot.enums.RepaymentMethod;
  * @author zss
  * @date 2017年4月20日
  */
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+//JUnit的默认Runner(BlockJUnit4ClassRunner)，JUnit不添加@RunWith注解时使用的都是这个Runner  
+@FixMethodOrder(MethodSorters.NAME_ASCENDING) 
 public class HelloTest {
 	
 	@Test(timeout=100)
