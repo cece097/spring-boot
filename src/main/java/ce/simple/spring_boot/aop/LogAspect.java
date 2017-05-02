@@ -1,6 +1,7 @@
 package ce.simple.spring_boot.aop;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -11,6 +12,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,6 +24,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class LogAspect {
+	
+	private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 	
 	/**
 	 * 切面定义
@@ -53,12 +58,27 @@ public class LogAspect {
 	//声明环绕通知
 	@Around("pointCutMethod()")
 	public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
-		Object[] args = pjp.getArgs();
-		System.out.println("args:"+Arrays.asList(args));
+		long start = System.currentTimeMillis();
+		//正在执行的类名
+		String className = pjp.getTarget().getClass().getName();
+		//正在执行的方法名
+		String methodString = pjp.getSignature().getName();
+		List<?> args = Arrays.asList(pjp.getArgs());
 		
-		Object o = pjp.proceed();
+		logger.info("{}.{}({}) on {}", 
+				className,
+				methodString,
+				args,
+				start);
 		
-		System.out.println("return :"+o);
-		return o;
+		Object result = pjp.proceed();
+		
+		logger.info("{}.{}({}): {} in {}ms",
+					className,
+					methodString,
+					args,
+					result,
+				    System.currentTimeMillis() - start);
+		return result;
 	}
 }
