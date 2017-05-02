@@ -19,7 +19,7 @@
 
 	<!--log4jdbc -->
 	<logger name="jdbc.sqltiming" level="OFF"/>
-	<logger name="jdbc.sqlonly" level="OFF"/>
+	<logger name="jdbc.sqlonly" level="ON"/>
 	<logger name="jdbc.resultset" level="OFF"/>
 	<logger name="jdbc.audit" level="OFF"/>
 	<logger name="jdbc.resultsettable" level="OFF"/>
