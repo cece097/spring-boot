@@ -20,8 +20,8 @@ public class UserServiceTest {
 	
 	@Test
 	public void userTest() {
-		User user = this.userService.getById(1L);
+		User user = this.userService.getById("1");
 		
-		assertThat(user).isEqualTo(new User(1L,"赵山","15652960936"));
+		assertThat(user).isEqualTo(new User("赵山","15652960936"));
 	}
 }

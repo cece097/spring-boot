@@ -13,7 +13,7 @@ public class userTest extends AbstractSpringMvcTester{
 
 	@Test
 	public void userTest(){
-		User user = userService.getById(1L);
+		User user = userService.getById("1");
 		System.out.println(user);
 	}	
 }

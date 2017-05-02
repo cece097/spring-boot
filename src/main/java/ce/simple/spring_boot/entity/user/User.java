@@ -1,5 +1,7 @@
 package ce.simple.spring_boot.entity.user;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -27,8 +29,13 @@ public class User extends UuidBase{
 	protected User() {
 	}
 	
-	public User(Long id, String name, String mobile){
-		super(id);
+	public User(String name, String mobile){
+		this.name = name;
+		this.mobile = mobile;
+	}
+	
+	public User(String id, String name, String mobile, Date timeCreate){
+		super(id,timeCreate);
 		this.name = name;
 		this.mobile = mobile;
 	}

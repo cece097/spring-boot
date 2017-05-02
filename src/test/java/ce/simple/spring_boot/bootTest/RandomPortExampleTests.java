@@ -28,6 +28,6 @@ public class RandomPortExampleTests {
 	public void userTest() {
 		User user = (User) this.restTemplate.getForObject("/user/1", User.class);
 		
-		assertThat(user).isEqualTo(new User(1L,"赵山","15652960936"));
+		assertThat(user).isEqualTo(new User("赵山","15652960936"));
 	}
 }

@@ -10,6 +10,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * 数据库主键
  * @author zss
@@ -21,12 +23,13 @@ public abstract class UuidBase extends EntityBase {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5923852121927680199L;
 
 	@Id
-	@GeneratedValue
-	@Column(name="ID",nullable = false)
-	private Long id;
+	@GeneratedValue(generator = "uuidGenerator")
+	@GenericGenerator(name = "uuidGenerator", strategy = "org.hibernate.id.UUIDGenerator")
+	@Column(name="ID",nullable = false,length = 36)
+	private String id;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="TIME_CREATE",nullable = false)
@@ -43,20 +46,16 @@ public abstract class UuidBase extends EntityBase {
 	protected UuidBase() {
 	}
 	
-	public UuidBase(Long id){
-		this.id = id;
-	}
-	
-	public UuidBase(Long id, Date timeCreated){
+	public UuidBase(String id, Date timeCreated){
 		this.id = id;
 		this.timeCreated = timeCreated;
 	}
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
