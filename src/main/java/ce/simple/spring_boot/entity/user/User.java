@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import ce.simple.spring_boot.common.json.JsonUtil;
 import ce.simple.spring_boot.entity.base.UuidBase;
 
 /**
@@ -58,6 +59,6 @@ public class User extends UuidBase{
 	
 	@Override
     public String toString() {
-        return "name:"+this.name+",mobile:"+this.mobile;
+        return JsonUtil.toJson(this);
     }
 }
