@@ -15,7 +15,7 @@ import ce.simple.spring_boot.entity.base.UuidBase;
  * @date 2017年4月20日
  */
 @Entity
-@Table(name="test_user")
+@Table(name="TEST_USER")
 public class User extends UuidBase{
 	
 	@Column(name="NAME",nullable = false)

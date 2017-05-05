@@ -1,5 +1,7 @@
 package ce.simple.spring_boot.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +34,17 @@ public class UserController {
 	public User getUserById(@PathVariable String id){
 		logger.info("query user by id {}", id);
 		return userService.getById(id);
+	}
+	
+	/**
+	 * 通过姓名查询用户列表
+	 * @param name
+	 * @return
+	 */
+	@RequestMapping(value="/name/{name}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<User> getUserByName(@PathVariable String name){
+		logger.info("query user by name : {}", name);
+		return userService.getByName(name);
 	}
 }

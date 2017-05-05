@@ -16,6 +16,7 @@ public abstract class EntityBase implements Serializable {
 
 	@Override
     public String toString() {
-        return "111";
+        return "";
     }
+
 }

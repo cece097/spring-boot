@@ -1,5 +1,7 @@
 package ce.simple.spring_boot.service.impl;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +44,12 @@ public class UserServiceImpl implements UserService {
 			redisUtil.setValueInCache(key, user);
 			return user;
 		}
+	}
+
+	@Override
+	public List<User> getByName(String name) {
+		logger.info("query user by name : {}",name);
+		return userRepository.nativeQuery("select * from test_user u where u.NAME like ?1", "%"+name+"%");
 	}
 
 }

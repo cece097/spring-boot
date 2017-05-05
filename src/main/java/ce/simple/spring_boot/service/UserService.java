@@ -1,5 +1,7 @@
 package ce.simple.spring_boot.service;
 
+import java.util.List;
+
 import ce.simple.spring_boot.entity.user.User;
 
 /**
@@ -15,4 +17,11 @@ public interface UserService {
 	 * @return
 	 */
 	public User getById(String id);
+	
+	/**
+	 * 通过名字获取用户
+	 * @param name
+	 * @return
+	 */
+	public List<User> getByName(String name);
 }
